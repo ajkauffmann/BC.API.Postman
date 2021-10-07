@@ -1,0 +1,6441 @@
+{
+	"info": {
+		"_postman_id": "b65c8e4b-c341-4bed-a2cc-37a5655fc79c",
+		"name": "BC API v1.0 Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIs",
+			"item": [
+				{
+					"name": "APIs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"customers\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"customerPaymentJournals\");",
+									"});",
+									"",
+									"pm.test(\"44 apis\", function () {",
+									"    var jsonData = pm.response.json();",
+									" ",
+									"     console.log(\"count\" + jsonData.value.length);",
+									"    pm.expect(jsonData.value.length).to.eql(48);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"//var url = pm.variables.get(\"url\");",
+									"",
+									"//pm.sendRequest(url, function (err, response) {",
+									"//    console.log(response.json());",
+									"//});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API metadata (nav links)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/$metadata",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"$metadata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "companies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "companies(id)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string - a CRONUS company was found\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"CRONUS\");",
+									"});",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"var schema = {",
+									"  \"$id\": \"http://example.com/example.json\",",
+									"  \"type\": \"object\",",
+									"  \"definitions\": {},",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+									"  \"properties\": {",
+									"    \"@odata.context\": {",
+									"      \"$id\": \"/properties/@odata.context\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The @odata.context Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+									"      ]",
+									"    },",
+									"    \"id\": {",
+									"      \"$id\": \"/properties/id\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Id Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+									"      ]",
+									"    },",
+									"    \"systemVersion\": {",
+									"      \"$id\": \"/properties/systemVersion\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Systemversion Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"23720\"",
+									"      ]",
+									"    },",
+									"    \"name\": {",
+									"      \"$id\": \"/properties/name\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Name Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"displayName\": {",
+									"      \"$id\": \"/properties/displayName\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Displayname Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"businessProfileId\": {",
+									"      \"$id\": \"/properties/businessProfileId\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Businessprofileid Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"   ",
+									"   var jsonData = pm.response.json();",
+									" ",
+									"     console.log(\"id\" + JSON.stringify(jsonData));",
+									"    //pm.expect(jsonData.value.length).to.eql(43);",
+									"",
+									"",
+									"pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+									"});",
+									"",
+									"",
+									"",
+									"var badSchema = {",
+									"  \"$id\": \"http://example.com/example.json\",",
+									"  \"type\": \"object\",",
+									"  \"definitions\": {},",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+									"  \"properties\": {",
+									"    \"@odatacontext\": {",
+									"      \"$id\": \"/properties/@odata.context\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The @odata.context Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+									"      ]",
+									"    },",
+									"    \"idMISSING\": {",
+									"      \"$id\": \"/properties/id\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Id Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+									"      ]",
+									"    },",
+									"    \"systemVersion\": {",
+									"      \"$id\": \"/properties/systemVersion\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Systemversion Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"23720\"",
+									"      ]",
+									"    },",
+									"    \"name\": {",
+									"      \"$id\": \"/properties/name\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Name Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"displayName\": {",
+									"      \"$id\": \"/properties/displayName\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Displayname Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"businessProfileId\": {",
+									"      \"$id\": \"/properties/businessProfileId\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Businessprofileid Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Bad Schema should not validate\", function () {",
+									"   ",
+									"   var jsonData = pm.response.json();",
+									" ",
+									"     console.log(\"id\" + JSON.stringify(jsonData));",
+									"    //pm.expect(jsonData.value.length).to.eql(43);",
+									"",
+									"//HWH: Fix - this is always true. Change schema and make it fail",
+									"pm.expect(tv4.validate(jsonData, schema)).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "companies property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Exclude\", function () {",
+									"    pm.expect(pm.response.text()).to.not.include(\"systemVersion\");",
+									"    ",
+									"});",
+									"pm.test(\"Include only one\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"value\");",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "companies property raw value",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/name/$value",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"name",
+								"$value"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Finance",
+			"item": [
+				{
+					"name": "GL Entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string - a CRONUS company was found\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"CRONUS\");",
+									"});",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"var schema = {",
+									"  \"$id\": \"http://example.com/example.json\",",
+									"  \"type\": \"object\",",
+									"  \"definitions\": {},",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+									"  \"properties\": {",
+									"    \"@odata.context\": {",
+									"      \"$id\": \"/properties/@odata.context\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The @odata.context Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+									"      ]",
+									"    },",
+									"    \"id\": {",
+									"      \"$id\": \"/properties/id\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Id Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+									"      ]",
+									"    },",
+									"    \"systemVersion\": {",
+									"      \"$id\": \"/properties/systemVersion\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Systemversion Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"23720\"",
+									"      ]",
+									"    },",
+									"    \"name\": {",
+									"      \"$id\": \"/properties/name\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Name Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"displayName\": {",
+									"      \"$id\": \"/properties/displayName\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Displayname Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"businessProfileId\": {",
+									"      \"$id\": \"/properties/businessProfileId\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Businessprofileid Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"   ",
+									"   var jsonData = pm.response.json();",
+									" ",
+									"     console.log(\"id\" + JSON.stringify(jsonData));",
+									"    //pm.expect(jsonData.value.length).to.eql(43);",
+									"",
+									"",
+									"pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+									"});",
+									"",
+									"",
+									"",
+									"var badSchema = {",
+									"  \"$id\": \"http://example.com/example.json\",",
+									"  \"type\": \"object\",",
+									"  \"definitions\": {},",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+									"  \"properties\": {",
+									"    \"@odatacontext\": {",
+									"      \"$id\": \"/properties/@odata.context\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The @odata.context Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+									"      ]",
+									"    },",
+									"    \"idMISSING\": {",
+									"      \"$id\": \"/properties/id\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Id Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+									"      ]",
+									"    },",
+									"    \"systemVersion\": {",
+									"      \"$id\": \"/properties/systemVersion\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Systemversion Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"23720\"",
+									"      ]",
+									"    },",
+									"    \"name\": {",
+									"      \"$id\": \"/properties/name\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Name Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"displayName\": {",
+									"      \"$id\": \"/properties/displayName\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Displayname Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"CRONUS Danmark A/S\"",
+									"      ]",
+									"    },",
+									"    \"businessProfileId\": {",
+									"      \"$id\": \"/properties/businessProfileId\",",
+									"      \"type\": \"string\",",
+									"      \"title\": \"The Businessprofileid Schema \",",
+									"      \"default\": \"\",",
+									"      \"examples\": [",
+									"        \"\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Bad Schema should not validate\", function () {",
+									"   ",
+									"   var jsonData = pm.response.json();",
+									" ",
+									"     console.log(\"id\" + JSON.stringify(jsonData));",
+									"    //pm.expect(jsonData.value.length).to.eql(43);",
+									"",
+									"//HWH: Fix - this is always true. Change schema and make it fail",
+									"pm.expect(tv4.validate(jsonData, schema)).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/generalLedgerEntries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"generalLedgerEntries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accounts",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journals",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journals",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{           \"code\": \"MyJournal\",\n            \"displayName\": \"Custom Journal Batch\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journalLines",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})/journalLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})",
+								"journalLines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journalLines",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\n            \"accountId\": \"{{accountId}}\",\n            \"postingDate\": \"2017-11-23\",\n            \"documentNumber\": \"12345\",\n            \"externalDocumentNumber\": \"67890\",\n            \"amount\": -10000.00,\n            \"description\": \"Salary to Bob\",\n            \"comment\": \"\",\n            \"dimensions\": [\n                           {\n                    \"code\": \"DEPARTMENT\",\n                    \"valueCode\": \"SALES\"\n                }\n              ]\n        }"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})/journalLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})",
+								"journalLines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple journalLines $batch",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"requests\": [\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"id\": \"r1\",\n\t\t\t\"url\": \"companies({{companyId}})/journals({{journalId}})/journalLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\"\n\t\t\t},\n\t\t\t\"body\": {\n\t\t\t    \"accountId\": \"{{accountId}}\",\n\t\t\t    \"postingDate\": \"2020-08-27\",\n\t\t\t    \"documentNumber\": \"12345\",\n\t\t\t    \"externalDocumentNumber\": \"67890\",\n\t\t\t    \"amount\": -3250,\n\t\t\t    \"description\": \"Salary to Bob\",\n\t\t\t    \"dimensions\": [\n                    {\n                        \"code\": \"DEPARTMENT\",\n                        \"valueCode\": \"SALES\"\n                    }\n\t\t\t    ]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"id\": \"r2\",\n\t\t\t\"url\": \"companies({{companyId}})/journals({{journalId}})/journalLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\"\n\t\t\t},\n\t\t\t\"body\": {\n\t\t\t    \"accountId\": \"{{accountId}}\",\n\t\t\t    \"postingDate\": \"2020-08-27\",\n\t\t\t    \"documentNumber\": \"12345\",\n\t\t\t    \"externalDocumentNumber\": \"67891\",\n\t\t\t    \"amount\": -3500,\n\t\t\t    \"description\": \"Salary to John\",\n\t\t\t    \"dimensions\": [\n                    {\n                        \"code\": \"DEPARTMENT\",\n                        \"valueCode\": \"SALES\"\n                    }\n\t\t\t    ]\n\t        }\n\t\t},\n        {\n            \"method\": \"POST\",\n\t\t\t\"id\": \"r3\",\n            \"dependsOn\": [\"r1\",\"r2\"],\n\t\t\t\"url\": \"companies({{companyId}})/journals({{journalId}})/Microsoft.NAV.post\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\"\n\t\t\t},\n\t\t\t\"body\": { }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/$batch",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"$batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journal with journalLines",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})/?$expand=journalLines",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "journalLines"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Attachments",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/attachments?$filter=parentId eq {{journalLineId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"attachments"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "parentId eq {{journalLineId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new attachment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"parentId\" : \"{{journalLineId}}\",\n\t\"fileName\": \"myPDF.pdf\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/attachments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"attachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload attachment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							},
+							{
+								"key": "If-Match",
+								"value": "*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/C:/Temp/2020-05-11_14-44-42.pdf"
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/attachments(parentId={{parentId}},id={{attachmentId}})/content",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"attachments(parentId={{parentId}},id={{attachmentId}})",
+								"content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Attachments",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"filename\"=\"myPDF.pdf\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/attachments({{parentId}},{{attachmentId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"attachments({{parentId}},{{attachmentId}})"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journalLines Microsoft.NAV.post",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})/Microsoft.NAV.post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})",
+								"Microsoft.NAV.post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journalLines",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})/journalLines({{journalLineId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})",
+								"journalLines({{journalLineId}})"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "journals",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/journals({{journalId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"journals({{journalId}})"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trialBalance",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/trialBalance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"trialBalance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dimensions",
+			"item": [
+				{
+					"name": "dimensions",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/dimensions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"dimensions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dimensionValues",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6Wi9wQUZrdW4ya2hPanZwVldQeGlMMnpGMWZLR0NjanA2UGJvV2NZcnNqMD0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/dimensions({{dimensionId}})/dimensionValues",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"dimensions({{dimensionId}})",
+								"dimensionValues"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "customers",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customers(id)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers({{customerId}})",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers({{customerId}})"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "customers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+											}
+										],
+										"url": {
+											"raw": "{{url}}/companies({{companyId}})/customers",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"companies({{companyId}})",
+												"customers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true",
+											"name": "Access-Control-Allow-Credentials",
+											"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "Origin, X-Requested-With, Authorization",
+											"name": "Access-Control-Allow-Headers",
+											"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*",
+											"name": "Access-Control-Allow-Origin",
+											"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Date",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Content-Length",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Server",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "OData-Version",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "x-ms-correlation-id",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip",
+											"name": "Content-Encoding",
+											"description": "The type of encoding used on the data."
+										},
+										{
+											"key": "Content-Length",
+											"value": "1600",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; odata.metadata=minimal",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 22 Mar 2018 10:13:07 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "OData-Version",
+											"value": "4.0",
+											"name": "OData-Version",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-HTTPAPI/2.0",
+											"name": "Server",
+											"description": "A name for the server"
+										},
+										{
+											"key": "request-id",
+											"value": "f14c4386-cc16-498f-ab75-d973b830ed16",
+											"name": "request-id",
+											"description": "Custom header"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff",
+											"name": "x-content-type-options",
+											"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+										},
+										{
+											"key": "x-ms-correlation-id",
+											"value": "9c7532af-e6c3-453e-9f12-0f0c78ab393f",
+											"name": "x-ms-correlation-id",
+											"description": "Custom header"
+										}
+									],
+									"cookie": [],
+									"body": "{\"@odata.context\":\"https://api.financials.dynamics.com/v1.0/M365x142550.OnMicrosoft.com/api/beta/$metadata#companies(7192822e-6ea1-49ab-b8df-288cf9d1cd63)/customers\",\"value\":[{\"@odata.etag\":\"W/\\\"JzQ0O0FZVU5yQU15bEpMb1Z6OHhIQmJGV01vQkFPdkFhSlVaMXNZN1RXMWlSQ1U9MTswMDsn\\\"\",\"id\":\"321ebd32-98cc-4209-915b-0123c62417bb\",\"number\":\"50000\",\"displayName\":\"Relecloud\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jesse.homer@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":8836.8,\"overdueAmount\":5754.96,\"totalSalesExcludingTax\":76713,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.457Z\",\"address\":{\"street\":\"25 Water Way\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3NidkdoVXgrMnBxd011TW1yb1UzQjdTanBZNjBpUml6Yng2N1dUemdrV2c9MTswMDsn\\\"\",\"id\":\"c4233376-4425-4eb1-9517-7ceea5d2f6a7\",\"number\":\"40000\",\"displayName\":\"Alpine Ski House\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"paul.cannon@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"502e8056-8412-4bdf-a1f7-a58fff1e31f3\",\"taxAreaDisplayName\":\"Atlanta, GA - North\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":4316.92,\"overdueAmount\":0,\"totalSalesExcludingTax\":61704.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.377Z\",\"address\":{\"street\":\"10 Deerfield Road\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0OzJNbWNwRXBza0M2N3FxaGNteG9IRWhib0d1ZkNibkNxWE00Wlg5ejVhRG89MTswMDsn\\\"\",\"id\":\"7e174d9d-afa3-4651-8dac-93e165291fd5\",\"number\":\"30000\",\"displayName\":\"Litware, Inc.\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"meagan.bond@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"dcee8d4f-5ea3-4aab-a105-d7b53cf9d569\",\"taxAreaDisplayName\":\"MIAMI, FL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"460d5634-ad4f-4b31-b3af-952fcf06aebf\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":53833.52,\"overdueAmount\":31848.98,\"totalSalesExcludingTax\":198604.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.303Z\",\"address\":{\"street\":\"10 High Tower Green\",\"city\":\"Miami\",\"state\":\"FL\",\"countryLetterCode\":\"US\",\"postalCode\":\"37125\"},\"paymentTerms\":{\"code\":\"CM\",\"description\":\"Current Month\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3loYWFDTEVnQ2FYc2QxelpoYWZFQTRBUEV2VTd5cHB5S0dnSVVHbExieUU9MTswMDsn\\\"\",\"id\":\"e533af1e-6f6b-4d59-b355-a8619407b2d0\",\"number\":\"10000\",\"displayName\":\"Coho Winery\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jim.glynn@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":0,\"overdueAmount\":0,\"totalSalesExcludingTax\":214536,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.13Z\",\"address\":{\"street\":\"192 Market Square\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O25SdlNmbmxSckcyRVFLVEU1d1ZZNFRoZGlpVjVGQ2FjMUtNWlByZVFOT289MTswMDsn\\\"\",\"id\":\"f86d8af3-4785-474d-8d6c-c0e4018af815\",\"number\":\"20000\",\"displayName\":\"Trey Research\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"helen.ray@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"5def96b4-c7f4-491c-8527-c0425559707f\",\"taxAreaDisplayName\":\"CHICAGO, IL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":3036.6,\"overdueAmount\":2024.4,\"totalSalesExcludingTax\":47927.4,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.217Z\",\"address\":{\"street\":\"153 Thomas Drive\",\"city\":\"Chicago\",\"state\":\"IL\",\"countryLetterCode\":\"US\",\"postalCode\":\"61236\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}}]}"
+								}
+							]
+						},
+						{
+							"name": "customers ?$select",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$select=email,type",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "email,type"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customers ?$top",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$top=3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "$top",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customers ?$skip",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$skip=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "$skip",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customers Deltatokens",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									},
+									{
+										"key": "prefer",
+										"value": "odata.track-changes",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "customers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+											}
+										],
+										"url": {
+											"raw": "{{url}}/companies({{companyId}})/customers",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"companies({{companyId}})",
+												"customers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true",
+											"name": "Access-Control-Allow-Credentials",
+											"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "Origin, X-Requested-With, Authorization",
+											"name": "Access-Control-Allow-Headers",
+											"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*",
+											"name": "Access-Control-Allow-Origin",
+											"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Date",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Content-Length",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Server",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "OData-Version",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "x-ms-correlation-id",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip",
+											"name": "Content-Encoding",
+											"description": "The type of encoding used on the data."
+										},
+										{
+											"key": "Content-Length",
+											"value": "1600",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; odata.metadata=minimal",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 22 Mar 2018 10:13:07 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "OData-Version",
+											"value": "4.0",
+											"name": "OData-Version",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-HTTPAPI/2.0",
+											"name": "Server",
+											"description": "A name for the server"
+										},
+										{
+											"key": "request-id",
+											"value": "f14c4386-cc16-498f-ab75-d973b830ed16",
+											"name": "request-id",
+											"description": "Custom header"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff",
+											"name": "x-content-type-options",
+											"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+										},
+										{
+											"key": "x-ms-correlation-id",
+											"value": "9c7532af-e6c3-453e-9f12-0f0c78ab393f",
+											"name": "x-ms-correlation-id",
+											"description": "Custom header"
+										}
+									],
+									"cookie": [],
+									"body": "{\"@odata.context\":\"https://api.financials.dynamics.com/v1.0/M365x142550.OnMicrosoft.com/api/beta/$metadata#companies(7192822e-6ea1-49ab-b8df-288cf9d1cd63)/customers\",\"value\":[{\"@odata.etag\":\"W/\\\"JzQ0O0FZVU5yQU15bEpMb1Z6OHhIQmJGV01vQkFPdkFhSlVaMXNZN1RXMWlSQ1U9MTswMDsn\\\"\",\"id\":\"321ebd32-98cc-4209-915b-0123c62417bb\",\"number\":\"50000\",\"displayName\":\"Relecloud\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jesse.homer@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":8836.8,\"overdueAmount\":5754.96,\"totalSalesExcludingTax\":76713,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.457Z\",\"address\":{\"street\":\"25 Water Way\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3NidkdoVXgrMnBxd011TW1yb1UzQjdTanBZNjBpUml6Yng2N1dUemdrV2c9MTswMDsn\\\"\",\"id\":\"c4233376-4425-4eb1-9517-7ceea5d2f6a7\",\"number\":\"40000\",\"displayName\":\"Alpine Ski House\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"paul.cannon@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"502e8056-8412-4bdf-a1f7-a58fff1e31f3\",\"taxAreaDisplayName\":\"Atlanta, GA - North\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":4316.92,\"overdueAmount\":0,\"totalSalesExcludingTax\":61704.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.377Z\",\"address\":{\"street\":\"10 Deerfield Road\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0OzJNbWNwRXBza0M2N3FxaGNteG9IRWhib0d1ZkNibkNxWE00Wlg5ejVhRG89MTswMDsn\\\"\",\"id\":\"7e174d9d-afa3-4651-8dac-93e165291fd5\",\"number\":\"30000\",\"displayName\":\"Litware, Inc.\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"meagan.bond@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"dcee8d4f-5ea3-4aab-a105-d7b53cf9d569\",\"taxAreaDisplayName\":\"MIAMI, FL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"460d5634-ad4f-4b31-b3af-952fcf06aebf\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":53833.52,\"overdueAmount\":31848.98,\"totalSalesExcludingTax\":198604.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.303Z\",\"address\":{\"street\":\"10 High Tower Green\",\"city\":\"Miami\",\"state\":\"FL\",\"countryLetterCode\":\"US\",\"postalCode\":\"37125\"},\"paymentTerms\":{\"code\":\"CM\",\"description\":\"Current Month\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3loYWFDTEVnQ2FYc2QxelpoYWZFQTRBUEV2VTd5cHB5S0dnSVVHbExieUU9MTswMDsn\\\"\",\"id\":\"e533af1e-6f6b-4d59-b355-a8619407b2d0\",\"number\":\"10000\",\"displayName\":\"Coho Winery\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jim.glynn@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":0,\"overdueAmount\":0,\"totalSalesExcludingTax\":214536,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.13Z\",\"address\":{\"street\":\"192 Market Square\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O25SdlNmbmxSckcyRVFLVEU1d1ZZNFRoZGlpVjVGQ2FjMUtNWlByZVFOT289MTswMDsn\\\"\",\"id\":\"f86d8af3-4785-474d-8d6c-c0e4018af815\",\"number\":\"20000\",\"displayName\":\"Trey Research\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"helen.ray@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"5def96b4-c7f4-491c-8527-c0425559707f\",\"taxAreaDisplayName\":\"CHICAGO, IL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":3036.6,\"overdueAmount\":2024.4,\"totalSalesExcludingTax\":47927.4,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.217Z\",\"address\":{\"street\":\"153 Thomas Drive\",\"city\":\"Chicago\",\"state\":\"IL\",\"countryLetterCode\":\"US\",\"postalCode\":\"61236\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}}]}"
+								}
+							]
+						},
+						{
+							"name": "customers Deltatokens Copy",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$deltatoken={{deltatoken}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "$deltatoken",
+											"value": "{{deltatoken}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "customers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+											}
+										],
+										"url": {
+											"raw": "{{url}}/companies({{companyId}})/customers",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"companies({{companyId}})",
+												"customers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true",
+											"name": "Access-Control-Allow-Credentials",
+											"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "Origin, X-Requested-With, Authorization",
+											"name": "Access-Control-Allow-Headers",
+											"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*",
+											"name": "Access-Control-Allow-Origin",
+											"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Date",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Content-Length",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "Server",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "OData-Version",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "x-ms-correlation-id",
+											"name": "Access-Control-Expose-Headers",
+											"description": "Lets a server whitelist headers that browsers are allowed to access."
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip",
+											"name": "Content-Encoding",
+											"description": "The type of encoding used on the data."
+										},
+										{
+											"key": "Content-Length",
+											"value": "1600",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; odata.metadata=minimal",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 22 Mar 2018 10:13:07 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "OData-Version",
+											"value": "4.0",
+											"name": "OData-Version",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "Microsoft-HTTPAPI/2.0",
+											"name": "Server",
+											"description": "A name for the server"
+										},
+										{
+											"key": "request-id",
+											"value": "f14c4386-cc16-498f-ab75-d973b830ed16",
+											"name": "request-id",
+											"description": "Custom header"
+										},
+										{
+											"key": "x-content-type-options",
+											"value": "nosniff",
+											"name": "x-content-type-options",
+											"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+										},
+										{
+											"key": "x-ms-correlation-id",
+											"value": "9c7532af-e6c3-453e-9f12-0f0c78ab393f",
+											"name": "x-ms-correlation-id",
+											"description": "Custom header"
+										}
+									],
+									"cookie": [],
+									"body": "{\"@odata.context\":\"https://api.financials.dynamics.com/v1.0/M365x142550.OnMicrosoft.com/api/beta/$metadata#companies(7192822e-6ea1-49ab-b8df-288cf9d1cd63)/customers\",\"value\":[{\"@odata.etag\":\"W/\\\"JzQ0O0FZVU5yQU15bEpMb1Z6OHhIQmJGV01vQkFPdkFhSlVaMXNZN1RXMWlSQ1U9MTswMDsn\\\"\",\"id\":\"321ebd32-98cc-4209-915b-0123c62417bb\",\"number\":\"50000\",\"displayName\":\"Relecloud\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jesse.homer@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":8836.8,\"overdueAmount\":5754.96,\"totalSalesExcludingTax\":76713,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.457Z\",\"address\":{\"street\":\"25 Water Way\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3NidkdoVXgrMnBxd011TW1yb1UzQjdTanBZNjBpUml6Yng2N1dUemdrV2c9MTswMDsn\\\"\",\"id\":\"c4233376-4425-4eb1-9517-7ceea5d2f6a7\",\"number\":\"40000\",\"displayName\":\"Alpine Ski House\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"paul.cannon@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"502e8056-8412-4bdf-a1f7-a58fff1e31f3\",\"taxAreaDisplayName\":\"Atlanta, GA - North\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":4316.92,\"overdueAmount\":0,\"totalSalesExcludingTax\":61704.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.377Z\",\"address\":{\"street\":\"10 Deerfield Road\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0OzJNbWNwRXBza0M2N3FxaGNteG9IRWhib0d1ZkNibkNxWE00Wlg5ejVhRG89MTswMDsn\\\"\",\"id\":\"7e174d9d-afa3-4651-8dac-93e165291fd5\",\"number\":\"30000\",\"displayName\":\"Litware, Inc.\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"meagan.bond@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"dcee8d4f-5ea3-4aab-a105-d7b53cf9d569\",\"taxAreaDisplayName\":\"MIAMI, FL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"460d5634-ad4f-4b31-b3af-952fcf06aebf\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":53833.52,\"overdueAmount\":31848.98,\"totalSalesExcludingTax\":198604.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.303Z\",\"address\":{\"street\":\"10 High Tower Green\",\"city\":\"Miami\",\"state\":\"FL\",\"countryLetterCode\":\"US\",\"postalCode\":\"37125\"},\"paymentTerms\":{\"code\":\"CM\",\"description\":\"Current Month\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3loYWFDTEVnQ2FYc2QxelpoYWZFQTRBUEV2VTd5cHB5S0dnSVVHbExieUU9MTswMDsn\\\"\",\"id\":\"e533af1e-6f6b-4d59-b355-a8619407b2d0\",\"number\":\"10000\",\"displayName\":\"Coho Winery\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jim.glynn@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":0,\"overdueAmount\":0,\"totalSalesExcludingTax\":214536,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.13Z\",\"address\":{\"street\":\"192 Market Square\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O25SdlNmbmxSckcyRVFLVEU1d1ZZNFRoZGlpVjVGQ2FjMUtNWlByZVFOT289MTswMDsn\\\"\",\"id\":\"f86d8af3-4785-474d-8d6c-c0e4018af815\",\"number\":\"20000\",\"displayName\":\"Trey Research\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"helen.ray@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"5def96b4-c7f4-491c-8527-c0425559707f\",\"taxAreaDisplayName\":\"CHICAGO, IL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":3036.6,\"overdueAmount\":2024.4,\"totalSalesExcludingTax\":47927.4,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.217Z\",\"address\":{\"street\":\"153 Thomas Drive\",\"city\":\"Chicago\",\"state\":\"IL\",\"countryLetterCode\":\"US\",\"postalCode\":\"61236\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}}]}"
+								}
+							]
+						},
+						{
+							"name": "customerSales",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - a CRONUS company was found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"CRONUS\");",
+											"});",
+											"",
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"var schema = {",
+											"  \"$id\": \"http://example.com/example.json\",",
+											"  \"type\": \"object\",",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"properties\": {",
+											"    \"@odata.context\": {",
+											"      \"$id\": \"/properties/@odata.context\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The @odata.context Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+											"      ]",
+											"    },",
+											"    \"id\": {",
+											"      \"$id\": \"/properties/id\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Id Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+											"      ]",
+											"    },",
+											"    \"systemVersion\": {",
+											"      \"$id\": \"/properties/systemVersion\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Systemversion Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"23720\"",
+											"      ]",
+											"    },",
+											"    \"name\": {",
+											"      \"$id\": \"/properties/name\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Name Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"CRONUS Danmark A/S\"",
+											"      ]",
+											"    },",
+											"    \"displayName\": {",
+											"      \"$id\": \"/properties/displayName\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Displayname Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"CRONUS Danmark A/S\"",
+											"      ]",
+											"    },",
+											"    \"businessProfileId\": {",
+											"      \"$id\": \"/properties/businessProfileId\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Businessprofileid Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"\"",
+											"      ]",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"pm.test(\"Body matches string\", function () {",
+											"   ",
+											"   var jsonData = pm.response.json();",
+											" ",
+											"     console.log(\"id\" + JSON.stringify(jsonData));",
+											"    //pm.expect(jsonData.value.length).to.eql(43);",
+											"",
+											"",
+											"pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+											"});",
+											"",
+											"",
+											"",
+											"var badSchema = {",
+											"  \"$id\": \"http://example.com/example.json\",",
+											"  \"type\": \"object\",",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"properties\": {",
+											"    \"@odatacontext\": {",
+											"      \"$id\": \"/properties/@odata.context\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The @odata.context Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"https://api.businesscentral.dynamics-tie.com/v1.0/21a44bbd-7658-4701-8662-1a7764053819/api/beta/$metadata#companies/$entity\"",
+											"      ]",
+											"    },",
+											"    \"idMISSING\": {",
+											"      \"$id\": \"/properties/id\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Id Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"b5a76e55-5e18-4b03-91c8-95d4ec3a7ff3\"",
+											"      ]",
+											"    },",
+											"    \"systemVersion\": {",
+											"      \"$id\": \"/properties/systemVersion\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Systemversion Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"23720\"",
+											"      ]",
+											"    },",
+											"    \"name\": {",
+											"      \"$id\": \"/properties/name\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Name Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"CRONUS Danmark A/S\"",
+											"      ]",
+											"    },",
+											"    \"displayName\": {",
+											"      \"$id\": \"/properties/displayName\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Displayname Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"CRONUS Danmark A/S\"",
+											"      ]",
+											"    },",
+											"    \"businessProfileId\": {",
+											"      \"$id\": \"/properties/businessProfileId\",",
+											"      \"type\": \"string\",",
+											"      \"title\": \"The Businessprofileid Schema \",",
+											"      \"default\": \"\",",
+											"      \"examples\": [",
+											"        \"\"",
+											"      ]",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"pm.test(\"Bad Schema should not validate\", function () {",
+											"   ",
+											"   var jsonData = pm.response.json();",
+											" ",
+											"     console.log(\"id\" + JSON.stringify(jsonData));",
+											"    //pm.expect(jsonData.value.length).to.eql(43);",
+											"",
+											"//HWH: Fix - this is always true. Change schema and make it fail",
+											"pm.expect(tv4.validate(jsonData, schema)).to.be.false;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customerSales",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customerSales"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customers",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "If-Match",
+										"value": "*"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6Wi9wQUZrdW4ya2hPanZwVldQeGlMMnpGMWZLR0NjanA2UGJvV2NZcnNqMD0="
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "   {\n             \"displayName\": \"Business Central Training\"\n   }"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "paymentterms",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/paymentTerms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"paymentTerms"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Quotes",
+					"item": [
+						{
+							"name": "salesQuotes",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesQuotes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesQuotes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesQuotes(id)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesQuotes({{salesQuoteId}})",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesQuotes({{salesQuoteId}})"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesQuotes lines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesQuotes({{salesQuoteId}})/?$expand=salesQuoteLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesQuotes({{salesQuoteId}})",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesQuoteLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesQuotesLine",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"itemId\": \"{{itemId}}\",\n    \"quantity\": 2\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesQuotes({{salesQuoteId}})/salesQuoteLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesQuotes({{salesQuoteId}})",
+										"salesQuoteLines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesQuotes deep insert",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"customerId\": \"{{customerId}}\",\n\t \"salesQuoteLines\" : \n\t\t[\n\t\t{\"itemId\": \"{{itemId}}\", \"quantity\": 4}\n\t\t]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesQuotes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesQuotes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "salesOrders",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesOrder $expand",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders({{salesOrderId}})?$expand=salesOrderLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders({{salesOrderId}})"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesOrderLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesOrderLines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders({{salesOrderId}})/salesOrderLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders({{salesOrderId}})",
+										"salesOrderLines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesorder",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customerId}}\",\r\n    \"currencyCode\": \"USD\",\r\n    \"paymentTermsId\": \"{{paymentTermsId}}\",\r\n    \"salesOrderLines\": [\r\n\t{\r\n\t\t\"itemId\": \"{{itemId}}\",\r\n\t\t\"quantity\": 1\r\n\t},\r\n\t{\r\n\t\t\r\n\t}\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create salesOrders",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \n\t\t\n            \"customerId\": \"{{customerId}}\",\n            \"contactId\": \"\"\n\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create salesOrders deep insert",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Prefer",
+										"value": "return-no-content",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \t\n    \"customerId\": \"{{customerId}}\",\n    \"salesOrderLines\": [\n        {\n            \"itemId\": \"{{itemId}}\",\n            \"quantity\": 1\n        },\n        {\n            \"itemId\": \"{{itemId2}}\",\n            \"quantity\": 6\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders?$expand=salesOrderLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesOrderLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create salesOrderLines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "       {\n          \n            \"itemId\": \"{{itemId}}\",\n            \"quantity\": 2\n         \n        }"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders({{salesOrderId}})/salesOrderLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders({{salesOrderId}})",
+										"salesOrderLines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesOrders(id)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders({{salesOrderId}})/?$expand=salesOrderLines,customer($select=displayName, phoneNumber)",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesOrders({{salesOrderId}})",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesOrderLines,customer($select=displayName, phoneNumber)"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invoices",
+					"item": [
+						{
+							"name": "salesInvoices",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices $expand lines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices?$expand=salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesInvoiceLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices  $expand multiple",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/?$expand=salesInvoiceLines,customer,paymentTerm,shipmentMethod",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesInvoiceLines,customer,paymentTerm,shipmentMethod"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices  $expand customer number",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})?$expand=customer($select=number), salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "customer($select=number), salesInvoiceLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoiceLines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										"salesInvoiceLines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoiceLines with header",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/?$expand=salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesInvoiceLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices(id) heavy expand",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/?$expand=salesInvoiceLines($expand=account,item($expand=itemCategory))",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesInvoiceLines($expand=account,item($expand=itemCategory))"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {         \"externalDocumentNumber\": \"\",\n            \"invoiceDate\": \"2020-05-26\",\n            \"dueDate\": \"2020-06-25\",\n            \"customerId\": \"{{customerId}}\"\n  }"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices Post",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/Microsoft.NAV.post",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										"Microsoft.NAV.post"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoiceLines",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "       {\n           \"sequence\": 10000,\n           \"itemId\": \"{{itemId}}\",\n           \"quantity\": 2\n       }"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices({{salesInvoiceId}})",
+										"salesInvoiceLines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoices deep insert",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\n  \t\"externalDocumentNumber\": \"1234\",\n    \"invoiceDate\": \"2020-05-25\",\n    \"dueDate\": \"2020-06-24\",\n    \"customerId\": \"{{customerId}}\",\n    \"salesInvoiceLines\" : \n\t    [\n\t        {\"itemId\": \"{{itemId}}\", \"quantity\": 4},\n\t        {\"itemId\": \"{{itemId}}\", \"quantity\": 6}\n\t\t]\n  }"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesInvoices/?$expand=salesInvoiceLines",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"companies({{companyId}})",
+										"salesInvoices",
+										""
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "salesInvoiceLines"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoiceLines $batch",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6dWtFTTk4SUE0Rk1TRmQxOU85eTNmeHQ1V21pQ1hxa0gvOHpad3RxZDR0ND0=",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"requests\": [\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"atomicityGroup\" : \"g1\",\n\t\t\t\"id\": \"g1-r1\",\n\t\t\t\"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json; odata.metadata=minimal; odata.streaming=true\"\n\t\t\t},\n\t\t\t\"body\":\n\t    \t{\n\t            \"itemId\": \"{{itemId}}\",\n\t            \"quantity\": 2\n\t        }\n\t\t},\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"atomicityGroup\" : \"g2\",\n\t\t\t\"id\": \"g2-r1\",\n\t\t\t\"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json; odata.metadata=minimal; odata.streaming=true\"\n\t\t\t},\n\t\t\t\"body\":\n\t    \t{\n\t            \"itemId\": \"{{itemId}}\",\n\t            \"quantity\": 2\n\t        }\n\t\t}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/$batch",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"$batch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "salesInvoiceLines + Post $batch",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6dWtFTTk4SUE0Rk1TRmQxOU85eTNmeHQ1V21pQ1hxa0gvOHpad3RxZDR0ND0=",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"requests\": [\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"id\": \"r1\",\n\t\t\t\"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\",\n                \"Prefer\": \"return-no-content\"\n\t\t\t},\n\t\t\t\"body\":\n\t    \t{\n\t            \"itemId\": \"{{itemId}}\",\n\t            \"quantity\": 1\n\t        }\n\t\t},\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"id\": \"r2\",\n\t\t\t\"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\",\n                \"Prefer\": \"return-no-content\"\n\t\t\t},\n\t\t\t\"body\":\n\t    \t{\n\t            \"itemId\": \"{{itemId2}}\",\n\t            \"quantity\": 4\n\t        }\n\t\t},\n\t\t{\n\t\t\t\"method\": \"POST\",\n\t\t\t\"id\": \"r3\",\n            \"dependsOn\": [\"r1\",\"r2\"],\n\t\t\t\"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})/Microsoft.NAV.post\",\n\t\t\t\"headers\": {\n\t\t\t\t\"Content-Type\": \"application/json\"\n\t\t\t},\n\t\t\t\"body\":{ }\n\t\t},\n        {\n            \"method\": \"GET\",\n            \"id\": \"r4\",\n            \"dependsOn\": [\"r3\"],\n            \"url\": \"companies({{companyId}})/salesInvoices({{salesInvoiceId}})?$expand=salesInvoiceLines\"\n        } \n    ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/$batch",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"$batch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SalesInvoice + Post $batch json format",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6dWtFTTk4SUE0Rk1TRmQxOU85eTNmeHQ1V21pQ1hxa0gvOHpad3RxZDR0ND0=",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"requests\": [\n        {\n            \"method\": \"POST\",\n            \"atomicityGroup\": \"g1\",\n            \"id\": \"1\",\n            \"url\": \"companies({{companyId}})/salesInvoices\",\n            \"headers\": {\n                \"Content-Type\": \"application/json; odata.metadata=minimal; odata.streaming=true\"\n            },\n            \"body\": {\n                \"externalDocumentNumber\": \"1234\",\n                \"invoiceDate\": \"2020-05-25\",\n                \"dueDate\": \"2020-06-24\",\n                \"customerId\": \"{{customerId}}\",\n                \"salesInvoiceLines\": [\n                    {\n                        \"itemId\": \"{{itemId}}\",\n                        \"quantity\": 4\n                    },\n                    {\n                        \"itemId\": \"{{itemId}}\",\n                        \"quantity\": 6\n                    }\n                ]\n            }\n        },\n        {\n            \"method\": \"GET\",\n            \"atomicityGroup\": \"g1\",\n            \"id\": \"2\",\n            \"url\": \"$1\",\n            \"dependsOn\": [\"1\"],\n            \"headers\": {\n                \"Content-Type\": \"application/json; odata.metadata=minimal; odata.streaming=true\"\n            },\n            \"body\": {\n                \"invoiceDate\": \"2020-05-25\"\n            }\n        },\n        {\n            \"method\": \"POST\",\n            \"id\": \"3\",\n            \"url\": \"{{url}}/$1/Microsoft.NAV.Post\",\n            \"dependsOn\": [\n                \"g1\"\n            ],\n            \"headers\": {\n                \"Content-Type\": \"application/json; odata.metadata=minimal; odata.streaming=true\"\n            },\n            \"body\": {}\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/$batch",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"$batch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SalesInvoice + Post $batch multipart/mixed",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{user}}",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/mixed; boundary=batch_36522ad7-fc75-4b56-8c71-56071383e77b"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "--batch_36522ad7-fc75-4b56-8c71-56071383e77b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nPOST companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines HTTP/1.1\r\nContent-Type: application/json\r\nPrefer: return-no-content\r\nContent-ID: 1\r\n\r\n{\r\n    \"itemId\": \"{{itemId}}\",\r\n    \"quantity\": 1\r\n}\r\n\r\n--batch_36522ad7-fc75-4b56-8c71-56071383e77b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 2\r\n\r\nPOST companies({{companyId}})/salesInvoices({{salesInvoiceId}})/salesInvoiceLines HTTP/1.1\r\nContent-Type: application/json\r\nPrefer: return-no-content\r\n\r\n{\r\n    \"itemId\": \"{{itemId}}\",\r\n    \"quantity\": 1\r\n}\r\n\r\n--batch_36522ad7-fc75-4b56-8c71-56071383e77b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 3\r\n\r\nPOST companies({{companyId}})/salesInvoices({{salesInvoiceId}})/Microsoft.NAV.post HTTP/1.1\r\nContent-Type: application/json\r\n\r\n{}\r\n\r\n--batch_36522ad7-fc75-4b56-8c71-56071383e77b\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 4\r\n\r\nGET companies({{companyId}})/salesInvoices({{salesInvoiceId}})?$expand=salesInvoiceLines HTTP/1.1\r\n",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1.0/$batch",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1.0",
+										"$batch"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "items",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "items create",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"displayName\" : \"My chair\",\n \"itemCategoryCode\" :\"CHAIR\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "items set inventory",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"inventory\" : 10\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items({{itemId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items({{itemId}})"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "picture",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items({{itemId}})/picture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items({{itemId}})",
+								"picture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "picture alternative",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/picture?$filter=id eq {{itemId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"picture"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "id eq {{itemId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "vendors",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/vendors?$expand=currency,paymentTerm,paymentMethod",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"vendors"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "currency,paymentTerm,paymentMethod"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paymentTerms",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/paymentTerms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"paymentTerms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchaseInvoices",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/purchaseInvoices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"purchaseInvoices"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "employees",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/employees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees with dimensions",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/employees?$expand=defaultDimensions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "defaultDimensions"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees, create awesome employee",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \n            \"number\": \"AJK\",\n            \"givenName\": \"Arend-Jan\",\n            \"middleName\": \"\",\n            \"surname\": \"Kauffmann\",\n            \"jobTitle\": \"MVP\",\n            \"mobilePhone\": \"+31634868959\",\n            \"email\": \"aj@kauffmann.nl\"\n\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/employees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "If-Match",
+								"value": "*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6Wi9wQUZrdW4ya2hPanZwVldQeGlMMnpGMWZLR0NjanA2UGJvV2NZcnNqMD0="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\n             \"phoneNumber\": \"555-555-555\",\n              \"defaultDimensions\": [\n                           {\n                    \"dimensionId\": \"{{dimensionId}}\",\n                    \"dimensionValueId\": \"{{dimensionValueId}}\"\n                }\n              ]\n   }"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/employees({{employeeId}})?$expand=defaultDimensions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"employees({{employeeId}})"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "defaultDimensions"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employees upload picture",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "If-Match",
+								"value": "*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6Wi9wQUZrdW4ya2hPanZwVldQeGlMMnpGMWZLR0NjanA2UGJvV2NZcnNqMD0="
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/employees({{employeeId}})/picture({{employeeId}})/content",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"employees({{employeeId}})",
+								"picture({{employeeId}})",
+								"content"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheets",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/timeRegistrationEntries?$filter=employeeId eq {{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"timeRegistrationEntries"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "employeeId eq {{employeeId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheets - using employeeNumber",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"employeeId\" : \"{{employeeId}}\",\n\t\"quantity\": 8,\n\t\"date\" : \"2020-05-25\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/timeRegistrationEntries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"timeRegistrationEntries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheets",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"quantity\": 9\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/timeRegistrationEntries({{timeRegistrationId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"timeRegistrationEntries({{timeRegistrationId}})"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimeSheets",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6dWtFTTk4SUE0Rk1TRmQxOU85eTNmeHQ1V21pQ1hxa0gvOHpad3RxZDR0ND0=",
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman."
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "If-Match",
+								"type": "text",
+								"value": "*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/timeRegistrationEntries({{timeRegistrationId}})",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"timeRegistrationEntries({{timeRegistrationId}})"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filtering",
+			"item": [
+				{
+					"name": "items filter eq",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items/?$filter=displayName eq '*Chair*'",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "displayName eq '*Chair*'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "items filter ne",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items/?$filter=unitPrice ne 0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "unitPrice ne 0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "items filter gt",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items/?$filter=unitPrice gt 1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "unitPrice gt 1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers ?$filter",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers/?$filter=displayName eq 'Alpine Ski House'",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "displayName eq 'Alpine Ski House'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accounts filtered",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/accounts/?$filter=category eq 'Expense' ",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"accounts",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "category eq 'Expense' "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accounts filter and",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/accounts/?$filter=number ge '50000' and number lt '60000'",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"accounts",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "number ge '50000' and number lt '60000'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accounts filter or",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/accounts/?$filter=category eq 'Expense' or category eq 'Income'",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"accounts",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "category eq 'Expense' or category eq 'Income'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accounts filter grouping",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/accounts/?$filter=(category eq 'Expense' or category eq 'Income') and (number ge '40000' and number lt '50000')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"accounts",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "(category eq 'Expense' or category eq 'Income') and (number ge '40000' and number lt '50000')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "items filter contains",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items/?$filter=contains(displayName, 'red')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "contains(displayName, 'red')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers filter endswith",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers/?$filter=endswith(email,'contoso.com')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "endswith(email,'contoso.com')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers filter startswith",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers/?$filter=startswith(email,'aj')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers",
+								""
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "startswith(email,'aj')"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sorting",
+			"item": [
+				{
+					"name": "customers ?$orderby",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$orderby=number desc ",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "$orderby",
+									"value": "number desc "
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expanding",
+			"item": [
+				{
+					"name": "customers expand financial details",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers?$expand=customerFinancialDetails",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "customerFinancialDetails"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "customers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+									}
+								],
+								"url": {
+									"raw": "{{url}}/companies({{companyId}})/customers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"companies({{companyId}})",
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true",
+									"name": "Access-Control-Allow-Credentials",
+									"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Authorization",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Date",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Content-Length",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "Server",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "OData-Version",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-ms-correlation-id",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Length",
+									"value": "1600",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; odata.metadata=minimal",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 22 Mar 2018 10:13:07 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "OData-Version",
+									"value": "4.0",
+									"name": "OData-Version",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-HTTPAPI/2.0",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "request-id",
+									"value": "f14c4386-cc16-498f-ab75-d973b830ed16",
+									"name": "request-id",
+									"description": "Custom header"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff",
+									"name": "x-content-type-options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "x-ms-correlation-id",
+									"value": "9c7532af-e6c3-453e-9f12-0f0c78ab393f",
+									"name": "x-ms-correlation-id",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\"@odata.context\":\"https://api.financials.dynamics.com/v1.0/M365x142550.OnMicrosoft.com/api/beta/$metadata#companies(7192822e-6ea1-49ab-b8df-288cf9d1cd63)/customers\",\"value\":[{\"@odata.etag\":\"W/\\\"JzQ0O0FZVU5yQU15bEpMb1Z6OHhIQmJGV01vQkFPdkFhSlVaMXNZN1RXMWlSQ1U9MTswMDsn\\\"\",\"id\":\"321ebd32-98cc-4209-915b-0123c62417bb\",\"number\":\"50000\",\"displayName\":\"Relecloud\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jesse.homer@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":8836.8,\"overdueAmount\":5754.96,\"totalSalesExcludingTax\":76713,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.457Z\",\"address\":{\"street\":\"25 Water Way\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3NidkdoVXgrMnBxd011TW1yb1UzQjdTanBZNjBpUml6Yng2N1dUemdrV2c9MTswMDsn\\\"\",\"id\":\"c4233376-4425-4eb1-9517-7ceea5d2f6a7\",\"number\":\"40000\",\"displayName\":\"Alpine Ski House\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"paul.cannon@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"502e8056-8412-4bdf-a1f7-a58fff1e31f3\",\"taxAreaDisplayName\":\"Atlanta, GA - North\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":4316.92,\"overdueAmount\":0,\"totalSalesExcludingTax\":61704.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.377Z\",\"address\":{\"street\":\"10 Deerfield Road\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0OzJNbWNwRXBza0M2N3FxaGNteG9IRWhib0d1ZkNibkNxWE00Wlg5ejVhRG89MTswMDsn\\\"\",\"id\":\"7e174d9d-afa3-4651-8dac-93e165291fd5\",\"number\":\"30000\",\"displayName\":\"Litware, Inc.\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"meagan.bond@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"dcee8d4f-5ea3-4aab-a105-d7b53cf9d569\",\"taxAreaDisplayName\":\"MIAMI, FL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"460d5634-ad4f-4b31-b3af-952fcf06aebf\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":53833.52,\"overdueAmount\":31848.98,\"totalSalesExcludingTax\":198604.6,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.303Z\",\"address\":{\"street\":\"10 High Tower Green\",\"city\":\"Miami\",\"state\":\"FL\",\"countryLetterCode\":\"US\",\"postalCode\":\"37125\"},\"paymentTerms\":{\"code\":\"CM\",\"description\":\"Current Month\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O3loYWFDTEVnQ2FYc2QxelpoYWZFQTRBUEV2VTd5cHB5S0dnSVVHbExieUU9MTswMDsn\\\"\",\"id\":\"e533af1e-6f6b-4d59-b355-a8619407b2d0\",\"number\":\"10000\",\"displayName\":\"Coho Winery\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"jim.glynn@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"359ea9e2-b45e-433c-accc-9b6aabd7d362\",\"taxAreaDisplayName\":\"ATLANTA, GA\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"807137d2-72ba-4829-be1d-622ce1d96741\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":0,\"overdueAmount\":0,\"totalSalesExcludingTax\":214536,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.13Z\",\"address\":{\"street\":\"192 Market Square\",\"city\":\"Atlanta\",\"state\":\"GA\",\"countryLetterCode\":\"US\",\"postalCode\":\"31772\"},\"paymentTerms\":{\"code\":\"1M(8D)\",\"description\":\"1 Month/2% 8 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}},{\"@odata.etag\":\"W/\\\"JzQ0O25SdlNmbmxSckcyRVFLVEU1d1ZZNFRoZGlpVjVGQ2FjMUtNWlByZVFOT289MTswMDsn\\\"\",\"id\":\"f86d8af3-4785-474d-8d6c-c0e4018af815\",\"number\":\"20000\",\"displayName\":\"Trey Research\",\"type\":\"Company\",\"phoneNumber\":\"\",\"email\":\"helen.ray@contoso.com\",\"website\":\"\",\"taxLiable\":true,\"taxAreaId\":\"5def96b4-c7f4-491c-8527-c0425559707f\",\"taxAreaDisplayName\":\"CHICAGO, IL\",\"taxRegistrationNumber\":\"\",\"currencyId\":\"00000000-0000-0000-0000-000000000000\",\"currencyCode\":\"USD\",\"paymentTermsId\":\"b37c3fd0-c09b-4d9f-8d31-ff88a4d39356\",\"shipmentMethodId\":\"00000000-0000-0000-0000-000000000000\",\"paymentMethodId\":\"5d4dd3f9-b73e-4e32-a516-502313c5038e\",\"blocked\":\" \",\"balance\":3036.6,\"overdueAmount\":2024.4,\"totalSalesExcludingTax\":47927.4,\"lastModifiedDateTime\":\"2018-01-28T19:00:21.217Z\",\"address\":{\"street\":\"153 Thomas Drive\",\"city\":\"Chicago\",\"state\":\"IL\",\"countryLetterCode\":\"US\",\"postalCode\":\"61236\"},\"paymentTerms\":{\"code\":\"14 DAYS\",\"description\":\"Net 14 days\"},\"shipmentMethod\":null,\"paymentMethod\":{\"code\":\"BANK\",\"description\":\"Bank Transfer\"}}]}"
+						}
+					]
+				},
+				{
+					"name": "items expand",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/items({{itemId}})/?$expand=itemCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"items({{itemId}})",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "itemCategory"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "salesOrder(id) heavy expand",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/salesOrders({{salesOrderId}})/?$expand=paymentTerm,salesOrderLines($expand=account,item($expand=itemCategory))",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"salesOrders({{salesOrderId}})",
+								""
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "paymentTerm,salesOrderLines($expand=account,item($expand=itemCategory))"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Count",
+			"item": [
+				{
+					"name": "customers $count",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic cGJvcnJpbmc6ZVNuSzViMGRCV2lBVm9LVEpwdzhvQ1VLYlZVbFlFdzJkOXY5ZGV0VFcwUT0="
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/companies({{companyId}})/customers/$count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"companies({{companyId}})",
+								"customers",
+								"$count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"item": [
+				{
+					"name": "Get supported entities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/microsoft/runtime/beta/companies({{companyId}})/webhookSupportedResources?$filter=startswith(resource, 'v1.0')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"microsoft",
+								"runtime",
+								"beta",
+								"companies({{companyId}})",
+								"webhookSupportedResources"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "startswith(resource, 'v1.0')"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1.0/subscriptions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"notificationUrl\": \"https://testbcwebhook.azurewebsites.net/api/BCWebhook\",\r\n  \"resource\": \"/api/v1.0/companies({{companyId}})/customers\",\r\n  \"clientState\": \"SuperSecretValue123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/subscriptions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Renew subscription",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1.0/subscriptions('3977d2176e3746488133c64ca85c8522')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"subscriptions('3977d2176e3746488133c64ca85c8522')"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unsubscribe webhook",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "If-Match",
+								"value": "*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1.0/subscriptions('9efe4568975147c0908ff0dd8a8db60d')",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1.0",
+								"subscriptions('9efe4568975147c0908ff0dd8a8db60d')"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{user}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "coll-customerid",
+			"value": ""
+		}
+	]
+}
